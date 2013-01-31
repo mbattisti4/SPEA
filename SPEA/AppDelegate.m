@@ -46,7 +46,7 @@
     
     [aControllers addObject:rMenuNavController];
     [aControllers addObject:rSPEAViewController];
-    [aControllers addObject:rSPEAViewController2];
+    [aControllers addObject:rSPEAViewController2]; 
     
     tabBarController.viewControllers = aControllers;   
     
