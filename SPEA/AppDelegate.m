@@ -7,11 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "SPEAViewController.h"
+#import "MenuViewController.h"
 
 @implementation AppDelegate
 
 - (void)dealloc
 {
+    [tabBarController release];
     [_window release];
     [super dealloc];
 }
@@ -19,9 +22,43 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+    
+    NSMutableArray *aControllers=[[NSMutableArray alloc] initWithCapacity:3];
+    tabBarController = [[UITabBarController alloc]init];
+    
+    /*MenuViewController *rMenuViewController = [[MenuViewController alloc]initWithNibName:nil bundle:nil];*/
+    MenuViewController *rMenuViewController = [[MenuViewController alloc] initWithName:@"Prodotti" pID:0];
+    rMenuViewController.title = @"Prodotti";
+    rMenuViewController.tabBarItem.image = [UIImage imageNamed:@"settings.png"];
+    
+    UINavigationController *rMenuNavController = [[UINavigationController alloc] initWithRootViewController: rMenuViewController];
+    
+    SPEAViewController *rSPEAViewController = [[SPEAViewController alloc]initWithNibName:nil bundle:nil];
+    rSPEAViewController.title = @"SPEA";
+    rSPEAViewController.tabBarItem.image = [UIImage imageNamed:@"settings.png"];
+    
+    SPEAViewController *rSPEAViewController2 = [[SPEAViewController alloc]initWithNibName:nil bundle:nil];
+    rSPEAViewController2.title = @"Settings";
+    rSPEAViewController2.tabBarItem.image = [UIImage imageNamed:@"settings.png"];
+    
+    [aControllers addObject:rMenuNavController];
+    [aControllers addObject:rSPEAViewController];
+    [aControllers addObject:rSPEAViewController2];
+    
+    tabBarController.viewControllers = aControllers;   
+    
+    [rSPEAViewController release];
+    [rMenuViewController release];
+    
+    [self.window addSubview:tabBarController.view];
+    
+    [self.window setRootViewController:tabBarController];
+    
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
