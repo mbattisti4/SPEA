@@ -27,7 +27,7 @@
     self.window.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     
     NSMutableArray *aControllers=[[NSMutableArray alloc] initWithCapacity:3];
-    tabBarController = [[UITabBarController alloc]init];
+    tabBarController = [[UITabBarController alloc]init]; 
     
     /*MenuViewController *rMenuViewController = [[MenuViewController alloc]initWithNibName:nil bundle:nil];*/
     MenuViewController *rMenuViewController = [[MenuViewController alloc] initWithName:@"Prodotti" pID:0];
