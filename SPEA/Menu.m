@@ -55,7 +55,7 @@
         }
         
         NSString * sql = @" \
-        SELECT Figlio.vcID as ID, Figlio.vcNome as vcNome  \
+        SELECT Figlio.vcID as ID, Figlio.vcNome as vcNome, Figlio.vcDescrizione  \
         FROM tblMenu  \
         left join tblVociMenu as  Figlio on meFiglio = Figlio.vcID \
         left join tblVociMenu as Padre on mepadre = Padre.vcID \
@@ -79,6 +79,7 @@
                 rItem.liID = sqlite3_column_int(sqlStatementMenu, 0);
                 
                 rItem.nome = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatementMenu,1)];
+                //rItem.descrizione = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatementMenu,2)];
                 //rItem.nome = [rItem.nome substringFromIndex:[rItem.nome length] - 4];
                 /* = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 2)];
                 const char *raw = sqlite3_column_blob(sqlStatement, 3);
