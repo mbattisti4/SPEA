@@ -22,6 +22,8 @@
     if (self) {
         rListItem = pLI;
         
+        UIView rView = 
+        
         UILabel *lblNome = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 25)];
         lblNome.text = rListItem.nome;
         lblNome.font = [UIFont fontWithName:@"Arial" size: 18.0];
@@ -41,8 +43,13 @@
         textView.scrollEnabled = YES;
         
         [self.view addSubview:textView];
-        
         [textView release];
+        
+        UIButton * btnPhotoGallery = [[UIButton alloc] initWithFrame:CGRectMake(0, textView.frame.size.height, 100, 50)];
+        btnPhotoGallery.tag = 1;
+        [btnPhotoGallery setTitle:@"Show gallery" forState:UIControlStateNormal];
+        [self.view addSubview:btnPhotoGallery];
+        [btnPhotoGallery release];
         
     }
     return self;
