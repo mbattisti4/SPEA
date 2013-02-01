@@ -7,7 +7,7 @@
 //
 
 #import "MenuViewController.h"
-#import "ListItemDetailViewController.h"
+#import "ListItemDetailsViewController.h"
 #import "Menu.h"
 
 @interface MenuViewController ()
@@ -103,7 +103,7 @@
     }
     else
     {
-        ListItemDetailViewController * rListItemDetailViewController = [[ListItemDetailViewController alloc]
+        ListItemDetailsViewController * rListItemDetailViewController = [[ListItemDetailsViewController alloc]
                                                                         initWithNibName:nil
                                                                         bundle:nil
                                                                         pListItem:[rMenu.aListItems objectAtIndex:indexPath.row]];
