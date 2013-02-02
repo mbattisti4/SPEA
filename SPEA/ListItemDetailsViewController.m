@@ -8,6 +8,7 @@
 
 #import "ListItemDetailsViewController.h"
 #import "ListItem.h"
+#import "ListItemGalleryViewController.h"
 
 @interface ListItemDetailsViewController ()
 
@@ -90,6 +91,14 @@
     UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Alert View Title" message:rID delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [alertView show];
     [alertView release];
+    
+    ListItemGalleryViewController * rListItemDetailViewController = [[ListItemGalleryViewController alloc]
+                                                                     initWithNibName:nil
+                                                                     bundle:nil];
+    
+    [self.navigationController pushViewController:rListItemDetailViewController animated:YES];
+    
+    [rListItemDetailViewController release];
     
 }
 
