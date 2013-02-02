@@ -57,15 +57,40 @@
         [textView release];
         
         //bottone che porta alla photogallery
-        UIButton * btnPhotoGallery = [[UIButton alloc] initWithFrame:CGRectMake(10, textView.frame.origin.y+textView.frame.size.height, rMainView.frame.size.width-20, 50)];
-        btnPhotoGallery.tag = 1;
-        btnPhotoGallery.backgroundColor=[UIColor yellowColor];
-        [btnPhotoGallery setTitle:@"Show gallery" forState:UIControlStateNormal];
+ 
         
-        [rMainView addSubview:btnPhotoGallery];
+        UIButton *btnPhotoGallery = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
+    	btnPhotoGallery.frame = CGRectMake(10, textView.frame.origin.y+textView.frame.size.height + 10, rMainView.frame.size.width-20, 50);
+    	btnPhotoGallery.backgroundColor = [UIColor clearColor];
+        btnPhotoGallery.tag = pLI.liID;
+    	[btnPhotoGallery setTitle:@"Show Gallery" forState:UIControlStateNormal];
+    	[btnPhotoGallery addTarget:self action:@selector(btnPhotoGalleryClick:) forControlEvents:UIControlEventTouchUpInside];
+    	[rMainView addSubview:btnPhotoGallery];
         [btnPhotoGallery release];
+         
+        
+        
+         /*UIButton * btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];btn.frame = CGRectMake(0, 0, 100, 50);
+         [btn setTitle:@"Hello, world!" forState:UIControlStateNormal];
+         [rMainView addSubview:btn];
+        [btn release];*/
+         
+         
+        
+
     }
     return self;
+}
+
+-(void)btnPhotoGalleryClick:(id)sender {
+    UIButton *resultButton = (UIButton *)sender;
+    
+    NSString *rID = [NSString stringWithFormat:@"%d", resultButton.tag];
+    
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Alert View Title" message:rID delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    [alertView show];
+    [alertView release];
+    
 }
 
 - (void)viewDidLoad

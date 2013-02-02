@@ -17,5 +17,5 @@
 @property(nonatomic, strong) ListItem * rListItem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil pListItem:(ListItem*)pLI;
-
+- (void)btnPhotoGalleryClick:(id)sender;
 @end

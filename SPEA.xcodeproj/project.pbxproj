@@ -17,6 +17,7 @@
 		A5301BED16AAA6B800A83ED6 /* spea.png in Resources */ = {isa = PBXBuildFile; fileRef = A5301BE916AAA6B800A83ED6 /* spea.png */; };
 		A5301BEE16AAA6B800A83ED6 /* spea@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5301BEA16AAA6B800A83ED6 /* spea@2x.png */; };
 		A5301BF016AAD33500A83ED6 /* ListItem.png in Resources */ = {isa = PBXBuildFile; fileRef = A5301BEF16AAD33500A83ED6 /* ListItem.png */; };
+		A53F8C1C16BD595D00CB765C /* ListItemGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53F8C1B16BD595D00CB765C /* ListItemGalleryViewController.m */; };
 		A562FA9916AAD86900A906B4 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = A562FA9816AAD86900A906B4 /* Menu.m */; };
 		A562FA9C16AAE8D500A906B4 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A562FA9B16AAE8D500A906B4 /* libsqlite3.0.dylib */; };
 		A562FAA216AAF83700A906B4 /* spea.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A562FAA116AAF83700A906B4 /* spea.sqlite */; };
@@ -47,6 +48,8 @@
 		A5301BE916AAA6B800A83ED6 /* spea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spea.png; sourceTree = "<group>"; };
 		A5301BEA16AAA6B800A83ED6 /* spea@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spea@2x.png"; sourceTree = "<group>"; };
 		A5301BEF16AAD33500A83ED6 /* ListItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ListItem.png; sourceTree = "<group>"; };
+		A53F8C1A16BD595D00CB765C /* ListItemGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItemGalleryViewController.h; sourceTree = "<group>"; };
+		A53F8C1B16BD595D00CB765C /* ListItemGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemGalleryViewController.m; sourceTree = "<group>"; };
 		A562FA9716AAD86900A906B4 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
 		A562FA9816AAD86900A906B4 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		A562FA9B16AAE8D500A906B4 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -135,6 +138,8 @@
 				A5301BCD16AA89B300A83ED6 /* MenuViewController.m */,
 				3FBE5E8216BC210E00A9BDDE /* ListItemDetailsViewController.h */,
 				3FBE5E8316BC210E00A9BDDE /* ListItemDetailsViewController.m */,
+				A53F8C1A16BD595D00CB765C /* ListItemGalleryViewController.h */,
+				A53F8C1B16BD595D00CB765C /* ListItemGalleryViewController.m */,
 				A5301BD016AA89C500A83ED6 /* SPEAViewController.h */,
 				A5301BD116AA89C500A83ED6 /* SPEAViewController.m */,
 				A5A296F716A9C3A100214C42 /* Supporting Files */,
@@ -240,6 +245,7 @@
 				A5301BDE16AA9D1700A83ED6 /* ListItem.m in Sources */,
 				A562FA9916AAD86900A906B4 /* Menu.m in Sources */,
 				3FBE5E8416BC210E00A9BDDE /* ListItemDetailsViewController.m in Sources */,
+				A53F8C1C16BD595D00CB765C /* ListItemGalleryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
