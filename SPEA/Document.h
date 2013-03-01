@@ -12,10 +12,16 @@
 {
     int ID;
     NSString * nome;
+    NSString * categoria;
+    UIImage * immagine;
     NSMutableArray *aListaSistemi;
 }
 
 @property (nonatomic, strong) NSMutableArray* aListaSistemi;
 @property (nonatomic, strong) NSString* nome;
+@property (nonatomic, strong) NSString* categoria;
+@property (nonatomic, strong) UIImage* immagine;
 @property (nonatomic) int ID;
+
+- (id)initWithName:(NSString *)pName ID:(int)pID Categoria:(NSString *) pCategoria;
 @end

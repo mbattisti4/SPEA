@@ -157,9 +157,10 @@
                   sqlite3_column_int(rSqlStatementMenu, 0),
                   [NSString stringWithUTF8String:(char *) sqlite3_column_text(rSqlStatementMenu,1)]);*/
             
-            rDocument = [[Document alloc]init];
-            rDocument.ID = sqlite3_column_int(rSqlStatementMenu, 0);
-            rDocument.nome = [NSString stringWithUTF8String:(char *) sqlite3_column_text(rSqlStatementMenu,1)];
+            rDocument = [[Document alloc]initWithName:[NSString stringWithUTF8String:(char *) sqlite3_column_text(rSqlStatementMenu,1)]
+                                                        ID:sqlite3_column_int(rSqlStatementMenu, 0)
+                                                        Categoria:[NSString stringWithUTF8String:(char *) sqlite3_column_text(rSqlStatementMenu,2)]];
+            
             [aListDocuments addObject:rDocument];
         }
     }

@@ -7,6 +7,7 @@
 //
 
 #import "DocumentViewController.h"
+#import "Document.h"
 
 @interface DocumentViewController ()
 
@@ -79,10 +80,11 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text = [[aDocumenti objectAtIndex:indexPath.row]nome];
-    /*cell.detailTextLabel.text = [[rMenu.aListItems objectAtIndex:indexPath.row]descrizione];
-    cell.imageView.image = [[rMenu.aListItems objectAtIndex:indexPath.row]immagine];
+    //cell.detailTextLabel.text = [[aDocumenti objectAtIndex:indexPath.row]ID];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.imageView.image = cell.imageView.image = [[aDocumenti objectAtIndex:indexPath.row]immagine];
     
-    if([[rMenu.aListItems objectAtIndex:indexPath.row]HasSons] == TRUE)
+    /*if([[rMenu.aListItems objectAtIndex:indexPath.row]HasSons] == TRUE)
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     else
         cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;*/

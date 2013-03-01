@@ -33,6 +33,8 @@
 		A5A2970716A9C3A100214C42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A2970616A9C3A100214C42 /* Default-568h@2x.png */; };
 		A5FB282616E0F5C900573DE4 /* DocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FB282516E0F5C900573DE4 /* DocumentViewController.m */; };
 		A5FB282E16E1079000573DE4 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FB282D16E1079000573DE4 /* Document.m */; };
+		A5FB283216E11A0C00573DE4 /* document.png in Resources */ = {isa = PBXBuildFile; fileRef = A5FB283116E11A0C00573DE4 /* document.png */; };
+		A5FB283416E11C3400573DE4 /* rar.png in Resources */ = {isa = PBXBuildFile; fileRef = A5FB283316E11C3400573DE4 /* rar.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		A5FB282516E0F5C900573DE4 /* DocumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentViewController.m; sourceTree = "<group>"; };
 		A5FB282C16E1078F00573DE4 /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
 		A5FB282D16E1079000573DE4 /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
+		A5FB283116E11A0C00573DE4 /* document.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = document.png; sourceTree = "<group>"; };
+		A5FB283316E11C3400573DE4 /* rar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rar.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 		A5301BD316AA904C00A83ED6 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				A5FB283316E11C3400573DE4 /* rar.png */,
+				A5FB283116E11A0C00573DE4 /* document.png */,
 				3F62715616B2CC22000CE764 /* settings.png */,
 				A5301BEF16AAD33500A83ED6 /* ListItem.png */,
 				A5301BE716AAA6B800A83ED6 /* Menu.png */,
@@ -238,6 +244,8 @@
 				A58997EE16AC0FC80018A752 /* fav.png in Resources */,
 				A5813C6B16B1CB5900C10D48 /* Default.png in Resources */,
 				3F62715716B2CC22000CE764 /* settings.png in Resources */,
+				A5FB283216E11A0C00573DE4 /* document.png in Resources */,
+				A5FB283416E11C3400573DE4 /* rar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,9 +339,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SPEA/SPEA-Prefix.pch";
 				INFOPLIST_FILE = "SPEA/SPEA-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -344,9 +352,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SPEA/SPEA-Prefix.pch";
 				INFOPLIST_FILE = "SPEA/SPEA-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
