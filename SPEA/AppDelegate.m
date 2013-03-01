@@ -10,6 +10,7 @@
 #import "SPEAViewController.h"
 #import "MenuViewController.h"
 #import "DocumentViewController.h"
+#import "Document.h"
 #import "sqlite3.h"
 
 @implementation AppDelegate
@@ -25,22 +26,21 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
-    int rNumDocumenti = [self fControllaAggiornamenti];
+    NSMutableArray * aDocumenti = [self fControllaAggiornamenti];
     
-    [UIApplication sharedApplication].applicationIconBadgeNumber = rNumDocumenti;
+    [UIApplication sharedApplication].applicationIconBadgeNumber = aDocumenti.count;
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     
-    NSMutableArray *aControllers=[[NSMutableArray alloc] initWithCapacity:3];
+    NSMutableArray *aControllers=[[NSMutableArray alloc] initWithCapacity:4];
     tabBarController = [[UITabBarController alloc]init]; 
     
-    /*MenuViewController *rMenuViewController = [[MenuViewController alloc]initWithNibName:nil bundle:nil];*/
     MenuViewController *rMenuViewController = [[MenuViewController alloc] initWithName:@"Prodotti" pID:0];
     rMenuViewController.title = @"Prodotti";
     rMenuViewController.tabBarItem.image = [UIImage imageNamed:@"settings.png"];
     
-    DocumentViewController *rMenuViewController2 = [[DocumentViewController alloc] initWithName:@"Documenti" pID:0];
+    DocumentViewController *rMenuViewController2 = [[DocumentViewController alloc] initWithName:@"Documenti" pListaDocumenti:aDocumenti];
     rMenuViewController2.title = @"Documenti";
     rMenuViewController2.tabBarItem.image = [UIImage imageNamed:@"settings.png"];
     
@@ -55,8 +55,8 @@
     UINavigationController *rMenuNavController = [[UINavigationController alloc] initWithRootViewController: rMenuViewController];
     UINavigationController *rMenuNavController2 = [[UINavigationController alloc] initWithRootViewController: rMenuViewController2];
     
-    [aControllers addObject:rMenuNavController];
     [aControllers addObject:rMenuNavController2];
+    [aControllers addObject:rMenuNavController];
     [aControllers addObject:rSPEAViewController];
     [aControllers addObject:rSPEAViewController2]; 
     
@@ -72,14 +72,14 @@
     return YES;
 }
 
-- (int) fControllaAggiornamenti
+- (NSMutableArray*) fControllaAggiornamenti
 {
     //scarico l'ultima versione del db
     NSString * rNomeDBRemoto = @"dbSQLite.sqlite";
     NSString * rNomeDBLocale = @"spea.sqlite";
-    int rNumeroDocumentiDaAggiornare = 0;
+    NSString * rURLWS = @"http://localhost:8888/SPEAMobilityWS/";
     
-    NSData * rFetchedData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://localhost:8888/SPEAMobilityWS/"]];
+    NSData * rFetchedData = [NSData dataWithContentsOfURL:[NSURL URLWithString:rURLWS]];
     NSString * rPathCartellaDocumenti = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString * rNomeDBRemotoInCartellaDocumenti = [rPathCartellaDocumenti stringByAppendingPathComponent:rNomeDBRemoto];
     NSString * rNomeDBRemotoInMainBundle = [[[NSBundle mainBundle] resourcePath]stringByAppendingPathComponent:rNomeDBRemoto];
@@ -90,6 +90,8 @@
     sqlite3_stmt * rSqlStatementMenu;
     BOOL rFileExists;
     NSError *rError;
+    NSMutableArray *aListDocuments = [[NSMutableArray alloc] initWithCapacity:4];
+    Document *rDocument;
     
     [rFetchedData writeToFile:rNomeDBRemotoInCartellaDocumenti atomically:YES];
     
@@ -151,15 +153,18 @@
     {
         while (sqlite3_step(rSqlStatementMenu)==SQLITE_ROW)
         {
-            NSLog(@"%d-%@",
+            /*NSLog(@"%d-%@",
                   sqlite3_column_int(rSqlStatementMenu, 0),
-                  [NSString stringWithUTF8String:(char *) sqlite3_column_text(rSqlStatementMenu,1)]);
+                  [NSString stringWithUTF8String:(char *) sqlite3_column_text(rSqlStatementMenu,1)]);*/
             
-            rNumeroDocumentiDaAggiornare++;
+            rDocument = [[Document alloc]init];
+            rDocument.ID = sqlite3_column_int(rSqlStatementMenu, 0);
+            rDocument.nome = [NSString stringWithUTF8String:(char *) sqlite3_column_text(rSqlStatementMenu,1)];
+            [aListDocuments addObject:rDocument];
         }
     }
     
-    return rNumeroDocumentiDaAggiornare;
+    return aListDocuments;
     
 }
 

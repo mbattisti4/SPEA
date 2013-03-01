@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DocumentViewController : UIViewController
+@interface DocumentViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+{
+    NSMutableArray * aDocumenti;
+}
 
+@property (nonatomic, strong) NSMutableArray * aDocumenti;
+
+- (id)initWithName:(NSString *)pNome pListaDocumenti:(NSMutableArray *)pListaDocumenti;
 @end

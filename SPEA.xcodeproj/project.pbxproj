@@ -22,7 +22,7 @@
 		A562FA9C16AAE8D500A906B4 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A562FA9B16AAE8D500A906B4 /* libsqlite3.0.dylib */; };
 		A562FAA216AAF83700A906B4 /* spea.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A562FAA116AAF83700A906B4 /* spea.sqlite */; };
 		A5813C6B16B1CB5900C10D48 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A5813C6A16B1CB5900C10D48 /* Default.png */; };
-		A58997EE16AC0FC80018A752 /* Schermata 2013-01-20 alle 12.42.32.png in Resources */ = {isa = PBXBuildFile; fileRef = A58997ED16AC0FC80018A752 /* Schermata 2013-01-20 alle 12.42.32.png */; };
+		A58997EE16AC0FC80018A752 /* fav.png in Resources */ = {isa = PBXBuildFile; fileRef = A58997ED16AC0FC80018A752 /* fav.png */; };
 		A5A296F116A9C3A100214C42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A296F016A9C3A100214C42 /* UIKit.framework */; };
 		A5A296F316A9C3A100214C42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A296F216A9C3A100214C42 /* Foundation.framework */; };
 		A5A296F516A9C3A100214C42 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A296F416A9C3A100214C42 /* CoreGraphics.framework */; };
@@ -32,6 +32,7 @@
 		A5A2970516A9C3A100214C42 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A2970416A9C3A100214C42 /* Default@2x.png */; };
 		A5A2970716A9C3A100214C42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A2970616A9C3A100214C42 /* Default-568h@2x.png */; };
 		A5FB282616E0F5C900573DE4 /* DocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FB282516E0F5C900573DE4 /* DocumentViewController.m */; };
+		A5FB282E16E1079000573DE4 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FB282D16E1079000573DE4 /* Document.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +57,7 @@
 		A562FA9B16AAE8D500A906B4 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		A562FAA116AAF83700A906B4 /* spea.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = spea.sqlite; sourceTree = "<group>"; };
 		A5813C6A16B1CB5900C10D48 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		A58997ED16AC0FC80018A752 /* Schermata 2013-01-20 alle 12.42.32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Schermata 2013-01-20 alle 12.42.32.png"; sourceTree = "<group>"; };
+		A58997ED16AC0FC80018A752 /* fav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fav.png; path = ../fav.png; sourceTree = "<group>"; };
 		A5A296EC16A9C3A100214C42 /* SPEA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPEA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5A296F016A9C3A100214C42 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A5A296F216A9C3A100214C42 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -71,6 +72,8 @@
 		A5A2970616A9C3A100214C42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A5FB282416E0F5C900573DE4 /* DocumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentViewController.h; sourceTree = "<group>"; };
 		A5FB282516E0F5C900573DE4 /* DocumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentViewController.m; sourceTree = "<group>"; };
+		A5FB282C16E1078F00573DE4 /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
+		A5FB282D16E1079000573DE4 /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +107,6 @@
 		A5A296E116A9C3A000214C42 = {
 			isa = PBXGroup;
 			children = (
-				A58997ED16AC0FC80018A752 /* Schermata 2013-01-20 alle 12.42.32.png */,
 				A5A296F616A9C3A100214C42 /* SPEA */,
 				A5A296EF16A9C3A100214C42 /* Frameworks */,
 				A5A296ED16A9C3A100214C42 /* Products */,
@@ -152,6 +154,8 @@
 				A5301BDD16AA9D1700A83ED6 /* ListItem.m */,
 				A562FA9716AAD86900A906B4 /* Menu.h */,
 				A562FA9816AAD86900A906B4 /* Menu.m */,
+				A5FB282C16E1078F00573DE4 /* Document.h */,
+				A5FB282D16E1079000573DE4 /* Document.m */,
 			);
 			path = SPEA;
 			sourceTree = "<group>";
@@ -159,6 +163,7 @@
 		A5A296F716A9C3A100214C42 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A58997ED16AC0FC80018A752 /* fav.png */,
 				A5813C6A16B1CB5900C10D48 /* Default.png */,
 				A5A296F816A9C3A100214C42 /* SPEA-Info.plist */,
 				A5A296F916A9C3A100214C42 /* InfoPlist.strings */,
@@ -230,7 +235,7 @@
 				A5301BEE16AAA6B800A83ED6 /* spea@2x.png in Resources */,
 				A5301BF016AAD33500A83ED6 /* ListItem.png in Resources */,
 				A562FAA216AAF83700A906B4 /* spea.sqlite in Resources */,
-				A58997EE16AC0FC80018A752 /* Schermata 2013-01-20 alle 12.42.32.png in Resources */,
+				A58997EE16AC0FC80018A752 /* fav.png in Resources */,
 				A5813C6B16B1CB5900C10D48 /* Default.png in Resources */,
 				3F62715716B2CC22000CE764 /* settings.png in Resources */,
 			);
@@ -252,6 +257,7 @@
 				3FBE5E8416BC210E00A9BDDE /* ListItemDetailsViewController.m in Sources */,
 				A53F8C1C16BD595D00CB765C /* ListItemGalleryViewController.m in Sources */,
 				A5FB282616E0F5C900573DE4 /* DocumentViewController.m in Sources */,
+				A5FB282E16E1079000573DE4 /* Document.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

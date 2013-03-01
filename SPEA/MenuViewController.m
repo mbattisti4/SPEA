@@ -60,6 +60,7 @@
     return [rMenu.aListItems count];
 }
 
+/*metodo obbligatorio perchè datasource*/
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";   
@@ -82,6 +83,7 @@
     return cell;
 }
 
+/*metodo obbligatorio perchè datasource*/
 -(void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSString * rValoreRicavato;
