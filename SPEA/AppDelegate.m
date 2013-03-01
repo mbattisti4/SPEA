@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "SPEAViewController.h"
 #import "MenuViewController.h"
+#import "DocumentViewController.h"
+#import "sqlite3.h"
 
 @implementation AppDelegate
 
@@ -23,6 +25,10 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
+    int rNumDocumenti = [self fControllaAggiornamenti];
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = rNumDocumenti;
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     
@@ -34,7 +40,9 @@
     rMenuViewController.title = @"Prodotti";
     rMenuViewController.tabBarItem.image = [UIImage imageNamed:@"settings.png"];
     
-    UINavigationController *rMenuNavController = [[UINavigationController alloc] initWithRootViewController: rMenuViewController];
+    DocumentViewController *rMenuViewController2 = [[DocumentViewController alloc] initWithName:@"Documenti" pID:0];
+    rMenuViewController2.title = @"Documenti";
+    rMenuViewController2.tabBarItem.image = [UIImage imageNamed:@"settings.png"];
     
     SPEAViewController *rSPEAViewController = [[SPEAViewController alloc]initWithNibName:nil bundle:nil];
     rSPEAViewController.title = @"SPEA";
@@ -44,7 +52,11 @@
     rSPEAViewController2.title = @"Settings";
     rSPEAViewController2.tabBarItem.image = [UIImage imageNamed:@"settings.png"];
     
+    UINavigationController *rMenuNavController = [[UINavigationController alloc] initWithRootViewController: rMenuViewController];
+    UINavigationController *rMenuNavController2 = [[UINavigationController alloc] initWithRootViewController: rMenuViewController2];
+    
     [aControllers addObject:rMenuNavController];
+    [aControllers addObject:rMenuNavController2];
     [aControllers addObject:rSPEAViewController];
     [aControllers addObject:rSPEAViewController2]; 
     
@@ -54,12 +66,101 @@
     [rMenuViewController release];
     
     [self.window addSubview:tabBarController.view];
-    
-    [self.window setRootViewController:tabBarController];
-    
+    [self.window setRootViewController:tabBarController];    
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (int) fControllaAggiornamenti
+{
+    //scarico l'ultima versione del db
+    NSString * rNomeDBRemoto = @"dbSQLite.sqlite";
+    NSString * rNomeDBLocale = @"spea.sqlite";
+    int rNumeroDocumentiDaAggiornare = 0;
+    
+    NSData * rFetchedData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://localhost:8888/SPEAMobilityWS/"]];
+    NSString * rPathCartellaDocumenti = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString * rNomeDBRemotoInCartellaDocumenti = [rPathCartellaDocumenti stringByAppendingPathComponent:rNomeDBRemoto];
+    NSString * rNomeDBRemotoInMainBundle = [[[NSBundle mainBundle] resourcePath]stringByAppendingPathComponent:rNomeDBRemoto];
+    NSFileManager *rFileManager = [NSFileManager defaultManager];
+    NSString * rSql;
+    sqlite3 * db;
+    const char * cStringMenu;
+    sqlite3_stmt * rSqlStatementMenu;
+    BOOL rFileExists;
+    NSError *rError;
+    
+    [rFetchedData writeToFile:rNomeDBRemotoInCartellaDocumenti atomically:YES];
+    
+    rPathCartellaDocumenti = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* rFile = [rPathCartellaDocumenti stringByAppendingPathComponent:rNomeDBRemoto];
+    
+    
+    //copio il file dalla cartella dei documenti a quella dell'app   
+    if ([rFileManager fileExistsAtPath:rNomeDBRemotoInMainBundle] == YES)
+    {
+        [rFileManager removeItemAtPath:rNomeDBRemotoInCartellaDocumenti error:&rError];
+        NSLog(@"%@ è già presente, lo cancello", rNomeDBRemotoInCartellaDocumenti);
+    }
+    
+    [rFileManager copyItemAtPath:rNomeDBRemotoInCartellaDocumenti toPath:rNomeDBRemotoInMainBundle error:&rError];    
+    
+    //controllo se i due database esistono
+    rFileExists = [[NSFileManager defaultManager] fileExistsAtPath:rNomeDBRemotoInMainBundle];
+    
+    if(rFileExists)
+        NSLog(@"%@ ESISTE", rNomeDBRemoto);
+    else
+        NSLog(@"%@ NON ESISTE", rNomeDBRemoto);
+    
+    rFile = [[[NSBundle mainBundle] resourcePath]stringByAppendingPathComponent:rNomeDBLocale];
+    rFileExists = [[NSFileManager defaultManager] fileExistsAtPath:rFile];
+    
+    if(rFileExists)
+        NSLog(@"%@ ESISTE", rNomeDBLocale);
+    else
+        NSLog(@"%@ NON ESISTE", rNomeDBLocale);
+    
+    //faccio una query sul DB
+    rFileManager = [NSFileManager defaultManager];
+    rNomeDBRemotoInMainBundle = [[[NSBundle mainBundle] resourcePath]stringByAppendingPathComponent:rNomeDBRemoto];
+    rFileExists = [rFileManager fileExistsAtPath:rNomeDBRemotoInMainBundle];
+    
+    if(!rFileExists)
+    {
+        NSLog(@"Cannot locate database file '%@'.", rNomeDBRemotoInMainBundle);
+    }
+    if(!(sqlite3_open([rNomeDBRemotoInMainBundle UTF8String], &db) == SQLITE_OK))
+    {
+        NSLog(@"An error has occured.");
+    }
+    
+    rSql = @"SELECT filID, filNome, catNome, SysNome FROM tblFiles \
+    join tblCategorie on filCategoria = catID \
+    left join tblFileSistemi on filSysFilID = filID \
+    left join tblSistemi on SysID = filSysSysID \
+    order by SysNome desc, catNome, filNome ";
+    cStringMenu = [rSql cStringUsingEncoding:NSASCIIStringEncoding];
+    
+    if(sqlite3_prepare(db, cStringMenu, -1, &rSqlStatementMenu, NULL) != SQLITE_OK)
+    {
+        NSLog(@"Problem with prepare statement");
+    }
+    else
+    {
+        while (sqlite3_step(rSqlStatementMenu)==SQLITE_ROW)
+        {
+            NSLog(@"%d-%@",
+                  sqlite3_column_int(rSqlStatementMenu, 0),
+                  [NSString stringWithUTF8String:(char *) sqlite3_column_text(rSqlStatementMenu,1)]);
+            
+            rNumeroDocumentiDaAggiornare++;
+        }
+    }
+    
+    return rNumeroDocumentiDaAggiornare;
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

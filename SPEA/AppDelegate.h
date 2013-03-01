@@ -15,4 +15,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+- (int) fControllaAggiornamenti;
+
 @end
+
+

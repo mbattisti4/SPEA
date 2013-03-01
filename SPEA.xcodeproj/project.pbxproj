@@ -31,6 +31,7 @@
 		A5A2970116A9C3A100214C42 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A2970016A9C3A100214C42 /* AppDelegate.m */; };
 		A5A2970516A9C3A100214C42 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A2970416A9C3A100214C42 /* Default@2x.png */; };
 		A5A2970716A9C3A100214C42 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A2970616A9C3A100214C42 /* Default-568h@2x.png */; };
+		A5FB282616E0F5C900573DE4 /* DocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FB282516E0F5C900573DE4 /* DocumentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,8 @@
 		A5A2970016A9C3A100214C42 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A5A2970416A9C3A100214C42 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A5A2970616A9C3A100214C42 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A5FB282416E0F5C900573DE4 /* DocumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentViewController.h; sourceTree = "<group>"; };
+		A5FB282516E0F5C900573DE4 /* DocumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +137,8 @@
 				A5301BD316AA904C00A83ED6 /* Graphics */,
 				A5A296FF16A9C3A100214C42 /* AppDelegate.h */,
 				A5A2970016A9C3A100214C42 /* AppDelegate.m */,
+				A5FB282416E0F5C900573DE4 /* DocumentViewController.h */,
+				A5FB282516E0F5C900573DE4 /* DocumentViewController.m */,
 				A5301BCC16AA89B300A83ED6 /* MenuViewController.h */,
 				A5301BCD16AA89B300A83ED6 /* MenuViewController.m */,
 				3FBE5E8216BC210E00A9BDDE /* ListItemDetailsViewController.h */,
@@ -246,6 +251,7 @@
 				A562FA9916AAD86900A906B4 /* Menu.m in Sources */,
 				3FBE5E8416BC210E00A9BDDE /* ListItemDetailsViewController.m in Sources */,
 				A53F8C1C16BD595D00CB765C /* ListItemGalleryViewController.m in Sources */,
+				A5FB282616E0F5C900573DE4 /* DocumentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
