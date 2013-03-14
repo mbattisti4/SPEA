@@ -12,6 +12,7 @@
 #import "DocumentViewController.h"
 #import "Document.h"
 #import "sqlite3.h"
+#import "Reachability.h"
 
 @implementation AppDelegate
 
@@ -74,7 +75,7 @@
 
 - (NSMutableArray*) fControllaAggiornamenti
 {
-    //scarico l'ultima versione del db
+    //definizioni
     NSString * rNomeDBRemoto = @"dbSQLite.sqlite";
     NSString * rNomeDBLocale = @"spea.sqlite";
     NSString * rURLWS = @"http://localhost:8888/SPEAMobilityWS/";
@@ -93,6 +94,48 @@
     NSMutableArray *aListDocuments = [[NSMutableArray alloc] initWithCapacity:4];
     Document *rDocument;
     
+    
+    
+    
+    
+    
+    
+    
+    // allocate a reachability object
+    /*Reachability* reach = [Reachability reachabilityWithHostName:rURLWS ];
+    
+    // tell the reachability that we DONT want to be reachable on 3G/EDGE/CDMA
+    if([reach reachabilityForLocalWiFi])
+        NSLog(@"WIFI Attiva");
+    else
+        NSLog(@"WIFI NON Attiva");
+    
+    // here we set up a NSNotification observer. The Reachability that caused the notification
+    // is passed in the object parameter
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
+    
+    [reach startNotifier];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];*/
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //scarico l'ultima versione del db
     [rFetchedData writeToFile:rNomeDBRemotoInCartellaDocumenti atomically:YES];
     
     rPathCartellaDocumenti = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];

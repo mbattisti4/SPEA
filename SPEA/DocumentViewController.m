@@ -7,6 +7,7 @@
 //
 
 #import "DocumentViewController.h"
+#import "MenuViewController.h"
 #import "Document.h"
 
 @interface DocumentViewController ()
@@ -15,6 +16,7 @@
 
 @implementation DocumentViewController
 @synthesize aDocumenti;
+@synthesize rPopCtrl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,7 +35,7 @@
         aDocumenti = pListaDocumenti;
         
         //self.view.backgroundColor=[UIColor yellowColor];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(save:)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(fShowFavourite:)];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(save:)];
         
         UITableView * tabTableView;
@@ -54,6 +56,26 @@
         
     }
     return self;
+}
+
+- (void) fShowFavourite:(id) sender
+{
+
+    
+    if([rPopCtrl isPopoverVisible])
+    {
+        [rPopCtrl dismissPopoverAnimated:YES];
+    }
+    else
+    {
+        MenuViewController *rMenuViewController = [[MenuViewController alloc] initWithName:@"Prodotti" pID:0];
+        rMenuViewController.title = @"Prodotti";
+        rPopCtrl = [[UIPopoverController alloc] initWithContentViewController:rMenuViewController];
+        
+        [rMenuViewController release];
+        
+        [rPopCtrl presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:true];
+    }
 }
 
 /*metodo obbligatorio perchè datasource*/

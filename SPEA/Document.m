@@ -27,9 +27,9 @@
         
         CFStringRef fileExtension = (CFStringRef) [nome pathExtension];
         rNomeImmagine = [NSString stringWithFormat:@"%@.png", fileExtension];
-        NSString* rDocumentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        NSString* rFile = [rDocumentsPath stringByAppendingPathComponent:rNomeImmagine];
-        if([[NSFileManager defaultManager] fileExistsAtPath:rNomeImmagine])
+        //NSString* rDocumentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString* rFile = [[[NSBundle mainBundle] resourcePath]stringByAppendingPathComponent:rNomeImmagine];
+        if([[NSFileManager defaultManager] fileExistsAtPath:rFile])
             immagine = [UIImage imageNamed:rNomeImmagine];
         else
             immagine = [UIImage imageNamed:@"document.png"];

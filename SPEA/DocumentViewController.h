@@ -11,9 +11,11 @@
 @interface DocumentViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
     NSMutableArray * aDocumenti;
+    UIPopoverController *rPopCtrl;
 }
 
 @property (nonatomic, strong) NSMutableArray * aDocumenti;
+@property (nonatomic, strong) UIPopoverController * rPopCtrl;
 
 - (id)initWithName:(NSString *)pNome pListaDocumenti:(NSMutableArray *)pListaDocumenti;
 @end
